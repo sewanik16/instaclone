@@ -1,0 +1,13 @@
+
+InstaClone
+
+1. Landing page => enter button => postview page
+2. Postview page => camera click => form page
+3. Form page => post button click => post database save => postview page
+
+
+form data => databse 
+access postview page
+
+
+@ 
