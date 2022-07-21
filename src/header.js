@@ -26,10 +26,10 @@ const Header = () => {
           <div style={main}>
             <div style={header}>
               <Link to="/">
-                <img src="instaCloneImg.jpg" style={img} />
+                <img src="instaCloneImg.jpg" style={img} alt="" />
               </Link>
               <Link to="/form">
-                <img src="camera.jpg" style={img} />
+                <img src="camera.jpg" style={img} alt="" />
               </Link>
             </div>
           </div>

@@ -1,23 +1,55 @@
 import { useState } from "react";
 import Header from "./header";
+import {useNavigate} from "react-router-dom"
 
 const Form = () => {
-  const [path, setPath] = useState("/nik")
+  let navigate = useNavigate()
+  const [path, setPath] = useState("")
+  const [data, setData] = useState({
+    name:"",location:"",description:""
+  })
 
-  const onPathchange = (e) =>{
-      // setPath(path, e.target.value)
-      window.alert(path)
-      document.getElementById("upload").innerHTML="e.target.value"
+  let name,value;
+
+  const handleInputs = (e) =>{
+    name = e.target.name;
+    value = e.target.value;
+      setData({...data, [name]:value})
+
+      // if(data[0].name.length){
+      //   document.getElementById("postbtn").style.backgroundColor="lightblue"
+      //   document.getElementById("postbtn").style.border="none"
+      // }
   }
 
-  return (
+  const handleUserAdd = async (e) =>{
+        e.preventDefault()
+        const {name, location, description}= data
+        await fetch("/post/add", {
+              method:"POST",
+              headers : {
+                "Content-Type": "application/json"
+              },
+              body : JSON.stringify({
+                name:name, location:location, description:description
+          })
+           }).then(()=>{
+           navigate("/post")
+           })   
+  }
+  
+    const inputChange = (e) =>{
+          setPath(e.target.value)
+    }
+
+    return (
     <>
     <Header/>
       <div style={main}>
         <form style={form}>
           <div style={input}>
-            <input type="text" id="upload" placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
-            <input type="file" id="file" onChange={(e)=>{onPathchange(e)}} style={{display:"none"}} />
+            <input type="text" id="filepath" name="filepath" value={path}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
+            <input type="file" id="file" onChange={inputChange}  hidden/>
             <button id="btn" onClick={()=>{
               document.getElementById("file").click();
               }}>
@@ -26,14 +58,14 @@ const Form = () => {
          
           </div>
           <div style={input}>
-            <input placeholder="Author" style={{width:"130px",paddingLeft:"10px"}}/>
-            <input placeholder="Location" style={{width:"130px",paddingLeft:"10px"}}/>
+            <input id="name" name="name" onChange={handleInputs} placeholder="Author" style={{width:"130px",paddingLeft:"10px"}}/>
+            <input id="location" name="location" onChange={handleInputs} placeholder="Location" style={{width:"130px",paddingLeft:"10px"}}/>
           </div>
           <div style={input}>
-            <input placeholder="Description" style={{width:"350px",paddingLeft:"10px"}}/>
+            <input id="description" name="description" onChange={handleInputs} placeholder="Description" style={{width:"350px",paddingLeft:"10px"}}/>
           </div>
           <div>
-            <button style={{padding:"2px 14px",color:"gray"}}>Post</button>
+            <button id="postbtn" type="submit" style={{padding:"2px 14px",color:"gray"}} onClick={handleUserAdd}>Post</button>
           </div>
         </form>
       </div>
