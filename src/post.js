@@ -10,7 +10,7 @@ const Post = () => {
         return res.json();
       })
       .then((postData) => {
-        console.log(postData)       
+        // console.log(postData)       
         setAllPost(postData);
         // console.log(postData[0].postImage)
       });
@@ -58,7 +58,7 @@ const Post = () => {
               <div>
           
                 <img
-                  src="{ele.postImage}"
+                  src={ele.postImage}
                   style={{ width: "100%", objectFit: "cover" }}
                   alt=""
                 />
@@ -83,7 +83,7 @@ const Post = () => {
                     paddingLeft: "30px",
                   }}
                 >
-                  64 likes
+                  {ele.likes} likes
                 </label>
               </div>
               <div style={row4}>

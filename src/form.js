@@ -4,43 +4,53 @@ import {useNavigate} from "react-router-dom"
 
 const Form = () => {
   let navigate = useNavigate()
-  const [path, setPath] = useState("")
+
   const [data, setData] = useState({
-    name:"",location:"",description:""
+    name:"",location:"",description:"",postImage:"",date:Date.now(),likes:Math.floor(Math.random() * 99 + 100)
   })
 
   let name,value;
-
+  let base64Path;
   const handleInputs = (e) =>{
-    name = e.target.name;
+      name = e.target.name;
     value = e.target.value;
       setData({...data, [name]:value})
-
-      // if(data[0].name.length){
-      //   document.getElementById("postbtn").style.backgroundColor="lightblue"
-      //   document.getElementById("postbtn").style.border="none"
-      // }
+      console.log(data)
   }
-
+  
+  const handlefile =async (e) =>{
+     base64Path = await fileTobase64(e.target.files[0]) 
+    setData({...data,postImage:base64Path})
+    
+  }
   const handleUserAdd = async (e) =>{
-        e.preventDefault()
-        const {name, location, description}= data
+    e.preventDefault()
+        const {name, location, description, postImage,date,likes}= data
         await fetch("/post/add", {
               method:"POST",
               headers : {
                 "Content-Type": "application/json"
               },
               body : JSON.stringify({
-                name:name, location:location, description:description
+                postImage:postImage,name:name, location:location, description:description,date:date,likes:likes
           })
            }).then(()=>{
            navigate("/post")
            })   
   }
-  
-    const inputChange = (e) =>{
-          setPath(e.target.value)
-    }
+
+  const fileTobase64 = (file) =>{
+    return new Promise((resolve, reject)=>{
+      const reader = new FileReader(file)
+      reader.readAsDataURL(file)
+      reader.onload = ()=>{
+        resolve(reader.result)
+      }
+      reader.onerror = (err)=>{
+        reject(err)
+      }
+    })
+  }
 
     return (
     <>
@@ -48,13 +58,13 @@ const Form = () => {
       <div style={main}>
         <form style={form}>
           <div style={input}>
-            <input type="text" id="filepath" name="filepath" value={path}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
-            <input type="file" id="file" onChange={inputChange}  hidden/>
-            <button id="btn" onClick={()=>{
+            {/* <input type="text" id="filepath" name="filepath" value={path}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/> */}
+            <input type="file" id="file" onChange={handlefile}  />
+            {/* <button id="btn" onClick={()=>{
               document.getElementById("file").click();
               }}>
               Browse  
-            </button>
+            </button> */}
          
           </div>
           <div style={input}>
