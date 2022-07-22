@@ -101,11 +101,13 @@ const main = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  position:"relative",
+  top:"100px",
 };
 const post = {
   width: "450px",
   height: "400px",
-  border: "1px solid green",
+  border: "1px solid silver",
   borderRadius: "4px",
   margin: "10px 0",
   padding: "0",

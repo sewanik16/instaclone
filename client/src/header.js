@@ -6,6 +6,12 @@ const Header = () => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    position:"fixed",
+    width:"100%",
+    height:"100px",
+    backgroundColor:"white",
+    zIndex:"1",
+    top:"0",
   };
   const header = {
     width: "100%",
