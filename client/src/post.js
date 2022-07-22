@@ -47,7 +47,7 @@ const Post = () => {
             <div style={post}>
               <div style={row1}>
                 <div>
-                  <label>
+                  <label >
                     <b>{ele.name}</b>
                   </label>
                   <br />
@@ -113,7 +113,7 @@ const post = {
 const row1 = {
   height: "10%",
   width: "91%",
-  padding: "10px 16px",
+  padding: "10px 26px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
