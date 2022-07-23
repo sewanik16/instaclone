@@ -14,9 +14,10 @@ const Form = () => {
   const handleInputs = (e) =>{
       name = e.target.name;
     value = e.target.value;
-      setData({...data, [name]:value})
+      setData({...data, [name]:value})   
       console.log(data)
   }
+  
   
   // for browse label button -- handle event
   const handlefile =async (e) =>{
@@ -29,7 +30,7 @@ const Form = () => {
   const handleUserAdd = async (e) =>{
     e.preventDefault()
         const {name, location, description, postImage,date,likes}= data
-        await fetch("/post/add", {
+        await fetch("https://instaclone-16-server.herokuapp.com/post/add", {
               method:"POST",
               headers : {
                 "Content-Type": "application/json"
@@ -68,20 +69,19 @@ const Form = () => {
               }}>
               Browse  
             </button> */}
-          
             <div>
-            <input type="text" id="filepath" name="filepath" value={path.name}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
+            <input required type="text" id="filepath" disabled name="filepath" value={path.name}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
               <label for="files" style={label}>Browse</label>
               <input id="files" hidden type="file" onChange={handlefile}/>
             </div>
          
           </div>
           <div style={input}>
-            <input id="name" name="name" onChange={handleInputs} placeholder="Author" style={{width:"130px",paddingLeft:"10px"}}/>
-            <input id="location" name="location" onChange={handleInputs} placeholder="Location" style={{width:"130px",paddingLeft:"10px"}}/>
+            <input required id="name" name="name" onChange={handleInputs} placeholder="Author" style={{width:"130px",paddingLeft:"10px"}}/>
+            <input required id="location" name="location" onChange={handleInputs} placeholder="Location" style={{width:"130px",paddingLeft:"10px"}}/>
           </div>
           <div style={input}>
-            <input id="description" name="description" onChange={handleInputs} placeholder="Description" style={{width:"350px",paddingLeft:"10px"}}/>
+            <input required id="description" name="description" onChange={handleInputs} placeholder="Description" style={{width:"350px",paddingLeft:"10px"}}/>
           </div>
           <div>
             <button id="postbtn" type="submit" style={{padding:"2px 14px",color:"gray"}} onClick={handleUserAdd}>Post</button>
@@ -92,7 +92,7 @@ const Form = () => {
     </>
   );
 };
-
+                            
 const main = {
   display: "flex",
   justifyContent:"center",

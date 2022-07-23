@@ -3,16 +3,26 @@
 const mongoose = require("mongoose")
 
 const postSchema = new mongoose.Schema({
-    name: String,
-    location : String,
+    name: {
+        type:String,
+      
+    },
+    location : {
+        type:String,
+        
+    },
     likes :{
         type:Number,
         default:30
     },
-    description : String,
+    description : {
+        type:String,
+        
+    },
     postImage : {
         type:String,
-        default:"nature.png"
+        default:"nature.png",
+     
     },
     date :Date
 })

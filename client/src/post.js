@@ -5,7 +5,7 @@ const Post = () => {
   const [allPost, setAllPost] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/post/posts")
+    fetch("https://instaclone-16-server.herokuapp.com/post/posts")
       .then((res) => {
         return res.json();
       })

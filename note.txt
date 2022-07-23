@@ -1,0 +1,7 @@
+https://instaclone-16-server.herokuapp.com/
+
+// "proxy": "http://localhost:5000"
+
+git add .
+git commit -am "message"
+git push heroku master
