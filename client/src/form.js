@@ -69,19 +69,20 @@ const Form = () => {
               }}>
               Browse  
             </button> */}
+            
             <div>
-            <input required type="text" id="filepath" disabled name="filepath" value={path.name}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
+            <input type="text" id="filepath" name="filepath" value={path.name}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
               <label for="files" style={label}>Browse</label>
               <input id="files" hidden type="file" onChange={handlefile}/>
             </div>
          
           </div>
           <div style={input}>
-            <input required id="name" name="name" onChange={handleInputs} placeholder="Author" style={{width:"130px",paddingLeft:"10px"}}/>
-            <input required id="location" name="location" onChange={handleInputs} placeholder="Location" style={{width:"130px",paddingLeft:"10px"}}/>
+            <input id="name" name="name" onChange={handleInputs} placeholder="Author" maxLength={24} style={{width:"130px",paddingLeft:"10px"}}/>
+            <input id="location" name="location" onChange={handleInputs} placeholder="Location" maxLength={24} style={{width:"130px",paddingLeft:"10px"}}/>
           </div>
           <div style={input}>
-            <input required id="description" name="description" onChange={handleInputs} placeholder="Description" style={{width:"350px",paddingLeft:"10px"}}/>
+            <input id="description" name="description" onChange={handleInputs} placeholder="Description" maxLength={36} style={{width:"350px",paddingLeft:"10px"}}/>
           </div>
           <div>
             <button id="postbtn" type="submit" style={{padding:"2px 14px",color:"gray"}} onClick={handleUserAdd}>Post</button>

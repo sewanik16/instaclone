@@ -51,31 +51,31 @@ const Post = () => {
                     <b>{ele.name}</b>
                   </label>
                   <br />
-                  <label style={{ color: "gray" }}>{ele.location}</label>
+                  <label style={{ color: "gray"}}>{ele.location}</label>
                 </div>
                 <img src="3Dots.jpg" style={{ height: "50px" }} alt="" />
               </div>
-              <div>
+              <div style={row2}>
           
                 <img
                   src={ele.postImage}
-                  style={{ width: "100%", objectFit: "cover" }}
+                  style={{width:"100%", height:"100%", backgroundSize:"cover"}}
                   alt=""
                 />
               </div>
               <div style={row3}>
-                <img src="likes.jpg" style={{ width: "100px" }} alt="" />
-                <label
-                  style={{
-                    fontSize: "16px",
-                    color: "gray",
-                    paddingLeft: "35px",
-                  }}
-                >
-                  {date}
-                </label>
+                  <img src="likes.jpg" style={{ width: "100px" }} alt="" />
+                  <label
+                    style={{
+                      fontSize: "16px",
+                      color: "gray",
+                      paddingLeft: "35px",
+                    }}
+                  >
+                    {date}
+                  </label>
               </div>
-              <div>
+              <div style={row4}>
                 <label
                   style={{
                     fontSize: "14px",
@@ -86,7 +86,7 @@ const Post = () => {
                   {ele.likes} likes
                 </label>
               </div>
-              <div style={row4}>
+              <div style={row5}>
                 <p>{ele.description}</p>
               </div>
             </div>
@@ -106,12 +106,16 @@ const main = {
 };
 const post = {
   width: "450px",
-  height: "400px",
+  height: "450px",
   border: "1px solid silver",
   borderRadius: "4px",
   margin: "10px 0",
   padding: "0",
 };
+const row2 = {
+  height: "60%",
+  width: "100%",
+}
 const row1 = {
   height: "10%",
   width: "91%",
@@ -126,12 +130,16 @@ const row3 = {
   alignItems: "center",
   width: "91%",
   height: "5%",
-  padding: "10px 16px",
+  padding: "8px 16px",
 };
-const row4 = {
+const row5 = {
   fontWeight: "bold",
   paddingLeft: "30px",
   fontSize: "16px",
+  height: "5%",
 };
+const row4 = {
+  height:"4%"
+}
 
 export default Post;
