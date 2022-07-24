@@ -5,3 +5,12 @@ https://instaclone-16-server.herokuapp.com/
 git add .
 git commit -am "message"
 git push heroku master
+
+
+
+Newly Added
+ : validation on input box
+ : onclick event on input box for browse file
+ : post merging on each other : solved
+ : Max input text length added 
+ : 

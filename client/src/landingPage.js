@@ -13,7 +13,7 @@ const LandingPage = () => {
   };
   const content = {
     padding: "30px",
-    fontFamily: "courier",
+    fontFamily: "calibri",
     color: "green",
     display: "flex",
     flexDirection: "column",
