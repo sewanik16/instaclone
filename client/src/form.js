@@ -71,7 +71,7 @@ const Form = () => {
             </button> */}
           
             <div>
-            <input required type="text" id="filepath" name="filepath" value={path.name}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
+            <input required type="text" onClick={()=>{document.getElementById("files").click()}} value={path.name}  placeholder="No file chosen" style={{width:"280px",paddingLeft:"10px"}}/>
               <label for="files" style={label}>Browse</label>
               <input id="files" hidden type="file" onChange={handlefile}/>
             </div>
